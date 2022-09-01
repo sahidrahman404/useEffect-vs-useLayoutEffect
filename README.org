@@ -1,0 +1,16 @@
+#+title: useLayoutEffect
+
+** useEffect vs useLayoutEffect
+There are two ways to tell React to run side-effects after it renders:
+1. useEffect
+2. useLayoutEffect
+
++ useLayoutEffect runs before the browser paints the screen as you can see in the
+react hook flow diagram below.
++ use useLayoutEffect over useEffect if you have a side effect that's going to
+modify the DOM in a way that's observable to the users.
++ NOTE: React 18 has smoothed out the differences in the UX between useEffect
+  and useLayoutEffect. That said, the simple "rule" described still applies!
+** React Hook Flow Diagram
+#+ATTR_ORG: :width 40%
+[[./public/hook-flow.png]]
