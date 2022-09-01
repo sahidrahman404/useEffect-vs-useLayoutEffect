@@ -1,7 +1,7 @@
 // useLayoutEffect: auto-scrolling textarea
 
 import { useEffect, useRef, useState } from "react";
-// import "./App.css";
+import "./App.css";
 
 function MessagesDisplay({ messages }: { messages: typeof allMessages }) {
   const containerRef = useRef<HTMLOListElement>(null);

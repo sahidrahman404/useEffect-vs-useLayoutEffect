@@ -1,0 +1,49 @@
+#root {
+  height: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.messaging-app {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-inline-size: 60ch;
+
+  margin: 0 auto;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: var(--space-xs);
+  min-width: 100%;
+}
+
+.log {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--space-xs);
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: scroll;
+  height: 50%;
+}
+
+.message {
+  margin-right: var(--space-3xs);
+  padding: var(--space-xs) var(--space-3xs);
+  background: hsl(0, 0%, 80%);
+  border-radius: 20px;
+  max-width: 60%;
+}
+
+.message:nth-child(even) {
+  background: hsl(20, 50%, 80%);
+  align-self: flex-end;
+}
