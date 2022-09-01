@@ -1,12 +1,12 @@
 // useLayoutEffect: auto-scrolling textarea
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import "./App.css";
 
 function MessagesDisplay({ messages }: { messages: typeof allMessages }) {
   const containerRef = useRef<HTMLOListElement>(null);
   // 🐨 replace useEffect with useLayoutEffect
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!containerRef.current) throw new Error("divref isn't assigned");
 
     containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -14,10 +14,9 @@ function MessagesDisplay({ messages }: { messages: typeof allMessages }) {
 
   return (
     <ol ref={containerRef} role="log" className="log">
-      {messages.map((message, index, array) => (
+      {messages.map((message) => (
         <li key={message.id} className="message">
           <strong>{message.author}</strong>: <span>{message.content}</span>
-          {/* {array.length - 1 === index ? null : <hr className="separator" />} */}
         </li>
       ))}
     </ol>
@@ -27,15 +26,16 @@ function MessagesDisplay({ messages }: { messages: typeof allMessages }) {
 // this is to simulate major computation/big rendering tree/etc.
 function sleep(time = 0) {
   const wakeUpTime = Date.now() + time;
+  // eslint-disable-next-line no-empty
   while (Date.now() < wakeUpTime) {}
 }
 
 function SlooooowSibling() {
   // try this with useLayoutEffect as well to see
   // how it impacts interactivity of the page before updates.
-  useEffect(() => {
+  useLayoutEffect(() => {
     // increase this number to see a more stark difference
-    sleep(300);
+    sleep(200);
   });
   return null;
 }
